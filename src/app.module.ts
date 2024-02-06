@@ -1,5 +1,6 @@
 import { AndGuard } from '@nest-lab/or-guard';
 import { Module } from '@nestjs/common';
+import { LocalAuthAndRolesGuard } from './app.constants';
 import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
 import { LocalAuthGuard } from './auth/local-auth.guard';
@@ -13,7 +14,7 @@ import { UsersModule } from './users/users.module';
     LocalAuthGuard,
     RolesGuard,
     {
-      provide: 'LocalAuthAndRolesGuard',
+      provide: LocalAuthAndRolesGuard,
       useClass: AndGuard([LocalAuthGuard, RolesGuard]),
     },
   ],
